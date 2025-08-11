@@ -4,41 +4,60 @@ const App = () => {
             <header className="header">
                 This is the App Header
             </header>
-            <main className="container">
+            <main>
+                <section className="container">
+                    <button className="btn btn-primary">
+                        Add New Task
+                    </button>
+                </section>
                 {/*Form to create tasks*/}
-                <form className="inputForm">
-                    <div className="formField">
-                        <label htmlFor="taskName" aria-label="Task Name">Task Name: </label>
-                        <input type="text" id="taskName" placeholder="Task Name" />
+                <form className="container form-container">
+                    <h2>Add New Task</h2>
+                    <div className="form-field">
+                        <label htmlFor="task-name" aria-label="Task Name">Task Name: </label>
+                        <input type="text" id="task-name" placeholder="Task Name" />
                     </div>
-                    <div className="formField">
-                        <label htmlFor="taskPriority" aria-label="Priority">Priority: </label>
-                        <select id="taskPriority">
+                    <div className="form-field">
+                        <label htmlFor="task-priority" aria-label="Priority">Priority: </label>
+                        <select id="task-priority">
                             <option value="Urgent">‼️ Urgent</option>
                             <option value="High">❗️️ High</option>
                             <option value="Medium">⚠️ Medium</option>
                             <option value="Low">❇️ Low</option>
                         </select>
                     </div>
-                    <div className="formField">
-                        <label htmlFor="taskCategory" aria-label="Task Category">Category: </label>
-                        <select id="taskCategory">
+                    <div className="form-field">
+                        <label htmlFor="task-category" aria-label="Task Category">Category: </label>
+                        <select id="task-category">
                             <option value="Personal">Personal</option>
                             <option value="Work">Work</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    <div className="formField">
-                        <label htmlFor="taskDescription" aria-label="Task description">Task Description: </label>
-                        <textarea id="taskDescription" placeholder="Task Description" />
+                    <div className="form-field">
+                        <label htmlFor="task-description" aria-label="Task description">Task Description: </label>
+                        <textarea id="task-description" placeholder="Task Description" />
                     </div>
-                    <div className="formField">
-                        <button>Add Task</button>
+                    <div className="form-field">
+                        <button className='btn btn-submit'>Add Task</button>
+                        <button className='btn btn-cancel'>Cancel</button>
                     </div>
                 </form>
                 <section className="container">
-                    <ul className="taskList">
-                        <li className="taskItem">test item</li>
+                    <ul className="task-list">
+                        <li tabIndex="0" className="task-item">
+                            <div className='task-header'>
+                                <h3>Task name</h3>
+                                <label className="switch">
+                                    <input  className="switch" type="checkbox"/>
+                                    <span tabIndex="0" className="slider round"></span>
+                                </label>
+                            </div>
+                            <p>Priority: High</p>
+                            <p> Category: Personal</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ex minima quam quibusdam saepe voluptates!</p>
+                        </li>
+                        <li className="task-item">test item 2</li>
                     </ul>
                 </section>
             </main>
