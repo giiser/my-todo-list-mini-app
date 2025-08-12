@@ -2,7 +2,7 @@ const App = () => {
     return (
         <>
             <header className="header">
-                <h1>✅ Simple ToDo App</h1>
+                <h1>✅ Task List App</h1>
             </header>
             <main>
                 <section className="container">
