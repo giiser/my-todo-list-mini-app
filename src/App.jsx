@@ -2,7 +2,7 @@ const App = () => {
     return (
         <>
             <header className="header">
-                This is the App Header
+                <h1>✅ Simple ToDo App</h1>
             </header>
             <main>
                 <section className="container">
@@ -16,6 +16,10 @@ const App = () => {
                     <div className="form-field">
                         <label htmlFor="task-name" aria-label="Task Name">Task Name: </label>
                         <input type="text" id="task-name" placeholder="Task Name" />
+                    </div>
+                    <div className="form-field">
+                        <label htmlFor="due-date" aria-label="Due Date">Due Date: </label>
+                        <input type="date" id="due-date"  />
                     </div>
                     <div className="form-field">
                         <label htmlFor="task-priority" aria-label="Priority">Priority: </label>
@@ -53,6 +57,7 @@ const App = () => {
                                     <span tabIndex="0" className="slider round"></span>
                                 </label>
                             </div>
+                            <p>Due date {new Date().toLocaleDateString('et')}</p>
                             <p>Priority: High</p>
                             <p> Category: Personal</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ex minima quam quibusdam saepe voluptates!</p>
