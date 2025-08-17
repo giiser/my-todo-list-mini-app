@@ -3,6 +3,7 @@
   --secondary-color: #352F44;
   --tertiary-color: #5A5275;
   --danger-color: #d0021b;
+  --danger-hover: #E51B32;
   --success-color: #7ed321;
   --text-color: #F2F2F2;
   --text-color-dark: #9C95A9;
@@ -129,6 +130,16 @@ input:focus, textarea:focus {
   box-shadow: var(--box-shadow);
 }
 
+.btn-cancel-form {
+  background-color: var(--danger-hover);
+  color: var(--text-color);
+  width: 70%;
+  align-self: center;
+}
+
+.btn-cancel-form:hover {
+  box-shadow: var(--box-shadow);
+}
 .btn-primary{
   background-color: var(--text-color-dark);
   color: var(--text-color);

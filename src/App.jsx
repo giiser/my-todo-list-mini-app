@@ -1,8 +1,8 @@
 import Button from "./atoms/Button.jsx";
 import Headline from "./atoms/Headline.jsx";
-import Switch from "./atoms/Switch.jsx";
 import FormContainer from "./components/FormContainer.jsx";
 import TaskList from "./components/TaskList.jsx";
+import {useEffect, useState} from "react";
 
 const App = () => {
     const priorities = [
@@ -16,6 +16,29 @@ const App = () => {
         {value: 'Personal', label: 'Personal'},
         {value: 'Other', label: 'Other'},
     ]
+
+    // states
+    const [tasks, setTasks] = useState(()=>{
+        return  JSON.parse(localStorage.getItem("tasks")) || [];
+    });
+
+    const [isFormVisible, setIsFormVisible] = useState(false);
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+
+    const deleteTask = (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this task?");
+        if (confirmDelete) {
+            setTasks(tasks.filter((task) => task.id !== id));
+        }
+    }
+
+    const primaryButtonClick = () => {
+        setIsFormVisible(!isFormVisible);
+    }
+
     return (
         <>
             <header className="header">
@@ -24,24 +47,15 @@ const App = () => {
             </header>
             <main>
                 <section className="container">
-                    <Button classes={'btn btn-primary'} buttonLabel={'Add New Task'}/>
-                    <FormContainer priorities={priorities} categories={categories} />
+                    <Button
+                        classes={!isFormVisible?'btn btn-primary':'btn btn-cancel-form'}
+                        buttonLabel={!isFormVisible?'Add New Task':'Hide Form'}
+                        onClick={primaryButtonClick}
+                    />
+                    <FormContainer priorities={priorities} categories={categories} tasks={tasks} setTasks={setTasks} isFormVisible={isFormVisible} setFormVisible={setIsFormVisible} />
                 </section>
                 <section className="container">
-                    <TaskList />
-                    <ul className="task-list">
-                        <li tabIndex="0" className="task-item">
-                            <div className='task-header'>
-                                <Headline level={3} value="Task Name"/>
-                                <Switch />
-                            </div>
-                            <p>Due date: {new Date().toLocaleDateString('et')}</p>
-                            <p>Priority: High</p>
-                            <p> Category: Personal</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ex minima quam quibusdam saepe voluptates!</p>
-                        </li>
-                        <li className="task-item">test item 2</li>
-                    </ul>
+                    <TaskList tasks={tasks} deleteTask={deleteTask}/>
                 </section>
             </main>
             <footer className="footer">
