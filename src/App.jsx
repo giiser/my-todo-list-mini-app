@@ -31,7 +31,7 @@ const App = () => {
     const deleteTask = (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this task?");
         if (confirmDelete) {
-            setTasks(tasks.filter((task) => task.id !== id));
+            setTasks(tasks.filter(task => task.id !== id));
         }
     }
 
