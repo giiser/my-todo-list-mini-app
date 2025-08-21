@@ -1,6 +1,5 @@
 import Headline from "../atoms/Headline.jsx";
 import Button from "../atoms/Button.jsx";
-import FormInput from "../atoms/FormInput.jsx";
 
 const Task = ({task, deleteTask, setComplete}) => {
     return (
