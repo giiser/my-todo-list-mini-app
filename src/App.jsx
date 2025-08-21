@@ -35,9 +35,24 @@ const App = () => {
         }
     }
 
+    const setComplete = (id) => {
+        setTasks(
+            tasks.map((task) => {
+                if (task.id === id) {
+                    // Create a new object for the updated task
+                    return { ...task, isComplete: !task.isComplete };
+                }
+                // Return the original task if it's not the one we're updating
+                return task;
+            })
+        );
+    };
+
     const primaryButtonClick = () => {
         setIsFormVisible(!isFormVisible);
     }
+
+
 
     return (
         <>
@@ -55,7 +70,7 @@ const App = () => {
                     <FormContainer priorities={priorities} categories={categories} tasks={tasks} setTasks={setTasks} isFormVisible={isFormVisible} setFormVisible={setIsFormVisible} />
                 </section>
                 <section className="container">
-                    <TaskList tasks={tasks} deleteTask={deleteTask}/>
+                    <TaskList tasks={tasks} deleteTask={deleteTask} setComplete={setComplete} />
                 </section>
             </main>
             <footer className="footer">
